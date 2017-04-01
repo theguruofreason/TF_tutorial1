@@ -23,6 +23,8 @@ sess = tf.Session()
 init = tf.global_variables_initializer()
 sess.run(init)
 for i in range(1000):
-	sess.run(train, {x: x_train, y_train})
+	sess.run(train, {x: x_train, y: y_train})
 	
-print(sess.run([W, b]))
+# evaluate training accuracy
+curr_W, curr_b, curr_loss  = sess.run([W, b, loss], {x:x_train, y:y_train})
+print("W: %s b: %s loss: %s" % (curr_W, curr_b, curr_loss))
